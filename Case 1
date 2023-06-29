@@ -1,0 +1,7 @@
+/*1. Provide the list of markets in which customer "ABC" operates its
+business in the APAC region.*/
+
+SELECT market FROM customer 
+WHERE customer = 'ABC' AND region = 'APAC'
+GROUP BY market
+ORDER BY market ;
