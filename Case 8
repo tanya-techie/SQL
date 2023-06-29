@@ -1,0 +1,17 @@
+/*8. In which quarter of 2021, got the maximum total_sold_quantity? The final
+output contains these fields sorted by the total_sold_quantity,
+Quarter
+total_sold_quantity*/
+
+SELECT 
+CASE
+    WHEN date BETWEEN '2020-09-01' AND '2020-11-30' then 1  
+    WHEN date BETWEEN '2020-12-01' AND '2021-02-28' then 2
+    WHEN date BETWEEN '2021-03-01' AND '2021-05-31' then 3
+    WHEN date BETWEEN '2021-06-01' AND '2021-08-31' then 4
+    END AS Quarters,
+    SUM(sold_quantity) AS total_sold_quantity
+FROM fact_sales_monthly
+WHERE fiscal_year = 2021
+GROUP BY Quarters
+ORDER BY total_sold_quantity DESC
